@@ -2,7 +2,7 @@ import "./styles.css";
 
 let radius = 245;
 let speed = 0.5;
-let angle = (-28 * Math.PI) / 180;
+let angle = (15 * Math.PI) / 180;
 
 function circleCircle(box1, box2) {
   // get distance between the circle's centers
@@ -186,19 +186,10 @@ canvas.height = window.innerHeight;
 
 // Initialize random boxes:
 let boxes = [];
-for (let i = 0; i < 1; i++) {
+for (let i = 0; i < 2; i++) {
   let box = {
-    x: 245,
-    y: 245,
-    width: radius * 2,
-    height: radius * 2,
-    dx: (Math.random() - 0.5) * speed,
-    dy: (Math.random() - 0.5) * speed,
-    isCircle: true,
-  };
-  let box2 = {
-    x: 718,
-    y: 415,
+    x: Math.floor(Math.random() * canvas.width),
+    y: Math.floor(Math.random() * canvas.height),
     width: radius * 2,
     height: radius * 2,
     dx: (Math.random() - 0.5) * speed,
@@ -206,12 +197,11 @@ for (let i = 0; i < 1; i++) {
     isCircle: true,
   };
   boxes.push(box);
-  boxes.push(box2);
 }
 
 let rectangle = {
-  x: 1070,
-  y: 368,
+  x: Math.floor(Math.random() * canvas.width),
+  y: Math.floor(Math.random() * canvas.height),
   width: 203,
   height: 490,
   dx: (Math.random() - 0.5) * speed,
