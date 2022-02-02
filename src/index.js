@@ -1,7 +1,8 @@
 import "./styles.css";
 
 let radius = 245;
-let speed = 0.5;
+let speed = 0.3;
+let angleValue = (28 * Math.PI) / 180;
 let angle = (-28 * Math.PI) / 180;
 
 function circleCircle(box1, box2) {
@@ -82,6 +83,9 @@ function collision(circle1, circle2, rect) {
 
 // Poor man's box physics update for time step dt:
 function doPhysics(boxes, width, height, dt) {
+  let offsetX = 100;
+  let offsetY = 15;
+
   for (let i = 0; i < boxes.length; i++) {
     let box = boxes[i];
 
@@ -91,18 +95,18 @@ function doPhysics(boxes, width, height, dt) {
 
     // Handle boundary collisions:
     if (!box.isCircle) {
-      if (box.x < 0) {
-        box.x = 0;
+      if (box.x - offsetX < 0) {
+        box.x = 0 + offsetX;
         box.dx = -box.dx;
-      } else if (box.x + box.width > width) {
-        box.x = width - box.width;
+      } else if (box.x + box.width + offsetX > width) {
+        box.x = width - box.width - offsetX;
         box.dx = -box.dx;
       }
-      if (box.y < 0) {
-        box.y = 0;
+      if (box.y - offsetY < 0) {
+        box.y = 0 + offsetY;
         box.dy = -box.dy;
-      } else if (box.y + box.height > height) {
-        box.y = height - box.height;
+      } else if (box.y + box.height + offsetY > height) {
+        box.y = height - box.height - offsetY;
         box.dy = -box.dy;
       }
     } else {
