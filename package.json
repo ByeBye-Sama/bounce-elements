@@ -9,12 +9,13 @@
   "scripts": {
     "clean": "rm dist/bundle.js",
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html"
+    "build": "npx cross-env NODE_ENV=production parcel build src/index.html"
   },
   "dependencies": {},
   "devDependencies": {
+    "eslint": "^8.8.0",
     "parcel-bundler": "^1.12.5",
-    "prettier": "^2.5.1",
-    "eslint": "^8.8.0"
+    "parcel-plugin-obfuscate": "^2.1.1",
+    "prettier": "^2.5.1"
   }
 }
